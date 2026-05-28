@@ -12,6 +12,7 @@ Os arquivos gerados aqui servem de base para a secao de Etapa 3 do relatorio.
 Use o DBC customizado descrito no relatorio da Etapa 2:
 
 ```bash
+cd yes-carla-can
 ./1_up_environment.sh --dbc data/our_dbcfile.dbc
 ```
 
