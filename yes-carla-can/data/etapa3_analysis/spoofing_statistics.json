@@ -1,0 +1,72 @@
+{
+    "604": {
+        "count": 3002,
+        "duration_s": 60.9942901134491,
+        "rate_msg_s": 49.21772176405847,
+        "mean_timestamp_diff": 0.020324655152765443,
+        "std_timestamp_diff": 0.04404785439057012,
+        "min_timestamp_diff": 7.152557373046875e-06,
+        "max_timestamp_diff": 0.20972204208374023,
+        "msg_type": "sporadic"
+    },
+    "606": {
+        "count": 120,
+        "duration_s": 60.85024094581604,
+        "rate_msg_s": 1.9720546399619638,
+        "mean_timestamp_diff": 0.5113465625698826,
+        "std_timestamp_diff": 0.002635935531989447,
+        "min_timestamp_diff": 0.5009469985961914,
+        "max_timestamp_diff": 0.5148501396179199,
+        "msg_type": "periodic"
+    },
+    "710": {
+        "count": 962,
+        "duration_s": 61.313321113586426,
+        "rate_msg_s": 15.68990200706695,
+        "mean_timestamp_diff": 0.06380158284452282,
+        "std_timestamp_diff": 0.0018508381457580335,
+        "min_timestamp_diff": 0.05005598068237305,
+        "max_timestamp_diff": 0.08052802085876465,
+        "msg_type": "periodic"
+    },
+    "711": {
+        "count": 294,
+        "duration_s": 60.994231939315796,
+        "rate_msg_s": 4.820127914595361,
+        "mean_timestamp_diff": 0.20817144006592422,
+        "std_timestamp_diff": 0.0013703311419406142,
+        "min_timestamp_diff": 0.200836181640625,
+        "max_timestamp_diff": 0.21602511405944824,
+        "msg_type": "periodic"
+    },
+    "712": {
+        "count": 962,
+        "duration_s": 61.31337809562683,
+        "rate_msg_s": 15.689887425540732,
+        "mean_timestamp_diff": 0.06380164213904978,
+        "std_timestamp_diff": 0.001858406039377255,
+        "min_timestamp_diff": 0.050057172775268555,
+        "max_timestamp_diff": 0.0806119441986084,
+        "msg_type": "periodic"
+    },
+    "713": {
+        "count": 287,
+        "duration_s": 60.99431085586548,
+        "rate_msg_s": 4.7053568762864515,
+        "mean_timestamp_diff": 0.21326682117435483,
+        "std_timestamp_diff": 0.08620029276040675,
+        "min_timestamp_diff": 0.20084905624389648,
+        "max_timestamp_diff": 1.6657459735870361,
+        "msg_type": "sporadic"
+    },
+    "714": {
+        "count": 294,
+        "duration_s": 60.994266986846924,
+        "rate_msg_s": 4.820125144932055,
+        "mean_timestamp_diff": 0.2081715596820714,
+        "std_timestamp_diff": 0.0013936622770638054,
+        "min_timestamp_diff": 0.20082712173461914,
+        "max_timestamp_diff": 0.2161259651184082,
+        "msg_type": "periodic"
+    }
+}
