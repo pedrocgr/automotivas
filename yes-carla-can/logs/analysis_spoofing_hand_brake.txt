@@ -1,0 +1,20 @@
+Analyzing CAN bus data
+      timestamp    bus  can_id   payload
+0  1.780063e+09  vcan0     600  00000000
+1  1.780063e+09  vcan0     601  00000000
+2  1.780063e+09  vcan0     602  7F000000
+3  1.780063e+09  vcan0     600  00000000
+4  1.780063e+09  vcan0     601  00000000
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 5378 entries, 0 to 5377
+Data columns (total 4 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   timestamp  5378 non-null   float64
+ 1   bus        5378 non-null   object 
+ 2   can_id     5378 non-null   int64  
+ 3   payload    5378 non-null   object 
+dtypes: float64(1), int64(1), object(2)
+memory usage: 168.2+ KB
+None
+Unique CAN IDs: [600 601 602 603 604 607 606]

@@ -1,0 +1,50 @@
+Resumo da análise CAN
+=====================
+
+1. Contagem de mensagens por ID CAN
+        normal  spoofing_handbrake  spoofing_reverse
+can_id                                              
+600        635                 786               635
+601        635                 786               635
+602        635                 786               635
+603        342                 423               342
+604        342                2003               342
+606        139                 171               139
+607        342                 423              1688
+60D         15                   0                 2
+
+2. Estatísticas de período por ID CAN
+              scenario can_id  ...  max_period_ms  std_period_ms
+0               normal    600  ...     113.079071       0.476359
+1               normal    601  ...     113.097906       0.478241
+2               normal    602  ...     113.118172       0.478569
+3               normal    603  ...     209.230185       0.643903
+4               normal    604  ...     209.244013       0.644467
+5               normal    606  ...     513.079882       0.639314
+6               normal    607  ...     209.251165       0.644014
+7               normal    60D  ...   11630.933046    3696.067157
+8   spoofing_handbrake    600  ...     113.066196       0.473447
+9   spoofing_handbrake    601  ...     113.072872       0.475787
+10  spoofing_handbrake    602  ...     113.075972       0.475914
+11  spoofing_handbrake    603  ...     209.124088       0.634141
+12  spoofing_handbrake    604  ...     209.059954      27.938155
+13  spoofing_handbrake    606  ...     513.123035       0.639165
+14  spoofing_handbrake    607  ...     209.115028       0.634881
+15    spoofing_reverse    600  ...     113.067865       0.473408
+16    spoofing_reverse    601  ...     113.074064       0.473585
+17    spoofing_reverse    602  ...     113.077164       0.473600
+18    spoofing_reverse    603  ...     209.155083       0.647670
+19    spoofing_reverse    604  ...     209.147930       0.646901
+20    spoofing_reverse    606  ...     513.108969       0.817040
+21    spoofing_reverse    607  ...     209.048986      22.500036
+22    spoofing_reverse    60D  ...    3375.956059            NaN
+
+[23 rows x 8 columns]
+
+3. Comparação quantitativa dos IDs atacados
+                     comparison  ... attack_duration_s
+0  normal_vs_spoofing_handbrake  ...         87.921170
+1    normal_vs_spoofing_reverse  ...         71.071299
+
+[2 rows x 12 columns]
+

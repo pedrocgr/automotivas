@@ -1,0 +1,96 @@
+{
+    "600": {
+        "message_count": 786,
+        "first_timestamp": 1780062816.116256,
+        "last_timestamp": 1780062904.037337,
+        "duration_seconds": 87.92108106613159,
+        "mean_period_seconds": 0.11200137715430776,
+        "min_period_seconds": 0.11090612411499023,
+        "max_period_seconds": 0.11306619644165039,
+        "unique_payloads": [
+            "00000000",
+            "19000000",
+            "33000000",
+            "4C000000",
+            "66000000",
+            "7F000000",
+            "99000000",
+            "B2000000",
+            "E5000000",
+            "FF000000"
+        ]
+    },
+    "601": {
+        "message_count": 786,
+        "first_timestamp": 1780062816.116286,
+        "last_timestamp": 1780062904.037365,
+        "duration_seconds": 87.92107892036438,
+        "mean_period_seconds": 0.11200137442084634,
+        "min_period_seconds": 0.11091494560241699,
+        "max_period_seconds": 0.11307287216186523,
+        "unique_payloads": [
+            "00000000"
+        ]
+    },
+    "602": {
+        "message_count": 786,
+        "first_timestamp": 1780062816.116302,
+        "last_timestamp": 1780062904.037382,
+        "duration_seconds": 87.9210798740387,
+        "mean_period_seconds": 0.11200137563571809,
+        "min_period_seconds": 0.11091399192810059,
+        "max_period_seconds": 0.11307597160339355,
+        "unique_payloads": [
+            "7F000000"
+        ]
+    },
+    "603": {
+        "message_count": 423,
+        "first_timestamp": 1780062816.26024,
+        "last_timestamp": 1780062904.037398,
+        "duration_seconds": 87.77715802192688,
+        "mean_period_seconds": 0.20800274412778882,
+        "min_period_seconds": 0.20687603950500488,
+        "max_period_seconds": 0.20912408828735352,
+        "unique_payloads": [
+            "00"
+        ]
+    },
+    "604": {
+        "message_count": 2003,
+        "first_timestamp": 1780062816.260267,
+        "last_timestamp": 1780062904.037411,
+        "duration_seconds": 87.77714395523071,
+        "mean_period_seconds": 0.04384472725036499,
+        "min_period_seconds": 2.384185791015625e-05,
+        "max_period_seconds": 0.2090599536895752,
+        "unique_payloads": [
+            "00",
+            "01"
+        ]
+    },
+    "606": {
+        "message_count": 171,
+        "first_timestamp": 1780062816.532271,
+        "last_timestamp": 1780062903.57238,
+        "duration_seconds": 87.04010915756226,
+        "mean_period_seconds": 0.5120006421033074,
+        "min_period_seconds": 0.5108559131622314,
+        "max_period_seconds": 0.5131230354309082,
+        "unique_payloads": [
+            "00"
+        ]
+    },
+    "607": {
+        "message_count": 423,
+        "first_timestamp": 1780062816.260283,
+        "last_timestamp": 1780062904.037426,
+        "duration_seconds": 87.7771430015564,
+        "mean_period_seconds": 0.20800270853449382,
+        "min_period_seconds": 0.20689606666564941,
+        "max_period_seconds": 0.20911502838134766,
+        "unique_payloads": [
+            "01000000"
+        ]
+    }
+}

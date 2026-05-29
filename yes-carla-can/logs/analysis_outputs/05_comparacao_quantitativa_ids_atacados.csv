@@ -1,0 +1,3 @@
+comparison,target_can_id,normal_message_count,attack_message_count,extra_messages,normal_rate_msg_per_s,attack_rate_msg_per_s,extra_rate_msg_per_s,increase_percent_count,increase_percent_rate,normal_duration_s,attack_duration_s
+normal_vs_spoofing_handbrake,604,342,2003,1661,4.815323420705997,22.78177144463805,17.966448023932053,485.6725146198831,373.1098921969795,71.02326679229736,87.9211699962616
+normal_vs_spoofing_reverse,607,342,1688,1346,4.815323420705997,23.75079712354298,18.935473702836983,393.5672514619883,393.2336843962345,71.02326679229736,71.07129883766174
