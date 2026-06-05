@@ -25,8 +25,9 @@ cd ~/code/automotivas/yes-carla-can
 ```
 
 Com o DBC customizado da Etapa 2, o ataque `hand_brake` continua consistente porque
-o ID `0x604` foi mantido. Ja o ataque `reverse` do modulo injeta `0x607`, enquanto no
-DBC customizado a mensagem `REVERSE` foi movida para `0x714`.
+o ID `0x604` foi mantido. Ja o ataque `reverse` deve ser executado com o DBC padrao:
+no DBC padrao, `REVERSE` usa o ID `0x603`; no DBC customizado, essa mensagem foi
+movida para `0x714`.
 
 ## 1. Ataque de spoofing: hand_brake
 
@@ -57,9 +58,13 @@ Impacto esperado:
 Funcao atacada:
 
 - feature: `reverse`
-- ID CAN alvo: `0x607`
-- payload: `FF FF FF FF`
+- ID CAN alvo: `0x603`
+- payload: `01`
 - periodo sugerido: `0.05 s`
+
+Observacao: o mapeamento original do ataque apontava para `0x607` com payload
+`FF FF FF FF`, mas `0x607` e a mensagem `GEAR` no DBC padrao. O ataque foi corrigido
+para enviar `0x603#01`, que corresponde ao campo `REVERSE`.
 
 Comando:
 
@@ -74,7 +79,7 @@ Impacto esperado:
 
 - o atacante injeta mensagens associadas ao estado de marcha re;
 - o comportamento do veiculo pode ficar inconsistente com os comandos normais;
-- no trafego CAN, a contagem do ID `0x607` aumenta fortemente.
+- no trafego CAN, a contagem do ID `0x603` aumenta durante o ataque corrigido.
 
 ## 3. Ataque fuzzy
 
@@ -99,12 +104,14 @@ Durante o fuzzy, registre quais funcoes foram afetadas visualmente, por exemplo:
 - setas;
 - portas.
 
+Nos testes realizados, o fuzzy funcionou. Os efeitos mais faceis de perceber foram a
+abertura das portas e o acionamento do freio de mao.
+
 ## 4. Evidencias a coletar
 
 Para cada ataque:
 
-- screenshot ou frame do video antes do ataque;
-- screenshot ou frame do video durante o ataque;
+- video ou trecho de video antes/durante o ataque;
 - comando usado;
 - ID CAN alvo;
 - periodo configurado;
@@ -121,19 +128,15 @@ Ja existem logs e graficos para dois ataques de spoofing:
 - `logs/plots/03_contagem_id_604_normal_vs_handbrake.png`
 - `logs/plots/04_contagem_id_607_normal_vs_reverse.png`
 - `logs/plots/02_periodo_medio_id_604.png`
-- `logs/plots/03_periodo_medio_id_607.png`
 
 Resumo quantitativo desses logs:
 
 | Comparacao | ID alvo | Normal | Ataque | Mensagens extras | Taxa normal | Taxa ataque |
 |---|---:|---:|---:|---:|---:|---:|
 | normal vs hand_brake | `0x604` | 342 | 2003 | 1661 | 4,82 msg/s | 22,78 msg/s |
-| normal vs reverse | `0x607` | 342 | 1688 | 1346 | 4,82 msg/s | 23,75 msg/s |
 
-## 6. Proximo passo
+## 6. Resultado final observado
 
-O que ainda precisa ser feito para fechar completamente a Etapa 4:
-
-- executar e registrar o ataque fuzzy;
-- extrair screenshots dos videos gravados;
-- inserir as screenshots no relatorio final.
+- `hand_brake`: funcionou e impediu/dificultou o movimento do veiculo;
+- `reverse`: passou a funcionar depois da correcao do ID/payload para `0x603#01`;
+- `fuzzy`: funcionou, com efeitos mais perceptiveis em portas e freio de mao.
