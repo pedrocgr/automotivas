@@ -1,0 +1,22 @@
+{
+    "normal": {
+        "capture": "logs/etapa5_normal.log",
+        "messages": 2818,
+        "regular_messages": 2818,
+        "intrusions_by_id": {},
+        "total_intrusions": 0
+    },
+    "attack": {
+        "capture": "logs/etapa5_handbrake_attack.log",
+        "messages": 3026,
+        "regular_messages": 2499,
+        "intrusions_by_id": {
+            "604": 527
+        },
+        "total_intrusions": 527
+    },
+    "summary": {
+        "false_positive_rate": 0.0,
+        "attack_intrusions": 527
+    }
+}

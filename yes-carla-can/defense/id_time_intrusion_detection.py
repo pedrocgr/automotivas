@@ -4,6 +4,14 @@ import sys
 from collections import deque
 import math
 
+
+def normalize_can_id(can_id):
+    """Return an uppercase hexadecimal CAN ID without the 0x prefix."""
+    text = str(can_id).strip()
+    if text.lower().startswith("0x"):
+        text = text[2:]
+    return text.upper()
+
 class QueueStats:
     def __init__(self, maxlen=10):
         self.queue = deque(maxlen=maxlen)
@@ -41,25 +49,30 @@ class QueueStats:
 class IdTimeIntrusionDetection():
     """Statistical IDS that flags CAN messages whose inter-arrival time deviates from a baseline."""
 
-    def __init__(self):
+    def __init__(self, verbose=True):
         self.intrusion_counter = {}
         self.regular_counter = 0
         self._last_line_count = 0
         self._last_alert = ""
+        self.verbose = verbose
 
     def load(self, path=None):
         """Load baseline CAN ID timing statistics from a JSON file."""
         with open(path, 'r') as f:
             can_ids_statistics = json.load(f)
 
-        self.known_ids = list(can_ids_statistics.keys())
-        print(f"self.known_ids = {self.known_ids}")
-        self.can_ids_statistics = can_ids_statistics
+        self.can_ids_statistics = {
+            normalize_can_id(can_id): values
+            for can_id, values in can_ids_statistics.items()
+        }
+        self.known_ids = set(self.can_ids_statistics.keys())
+        if self.verbose:
+            print(f"known_ids = {sorted(self.known_ids)}")
         self.running_statistics = {}
 
     def run(self, message):
         """Evaluate a single CAN message and update intrusion/regular counters."""
-        id = str(hex(message.arbitration_id))
+        id = normalize_can_id(f"{message.arbitration_id:X}")
         timestamp = message.timestamp
 
         if id not in self.known_ids:
@@ -72,21 +85,28 @@ class IdTimeIntrusionDetection():
 
         if self.can_ids_statistics[id]['msg_type'] == "periodic":
             if id not in self.running_statistics:
-                self.running_statistics[id] = {'last_timestamps': QueueStats(maxlen=10)}
-                self.running_statistics[id]['last_timestamps'].add(timestamp)
+                self.running_statistics[id] = {
+                    'last_timestamp': timestamp,
+                    'last_diffs': QueueStats(maxlen=10),
+                }
             else:
-                self.running_statistics[id]['last_timestamps'].add(timestamp)
+                last_timestamp = self.running_statistics[id]['last_timestamp']
+                self.running_statistics[id]['last_timestamp'] = timestamp
+                diff = timestamp - last_timestamp
+                if diff < 0:
+                    return
+                self.running_statistics[id]['last_diffs'].add(diff)
 
             # Check if queue is full
-            if len(self.running_statistics[id]['last_timestamps']) == self.running_statistics[id]['last_timestamps'].queue.maxlen:
-                expected_std = 3*self.can_ids_statistics[id]["std_timestamp_diff"]
-                actual_std = self.running_statistics[id]['last_timestamps'].std()
-                # Take the mean value of the queue
-                #actual_diff = self.running_statistics[id]['last_timestamps'].mean() - self.can_ids_statistics[id]["mean_timestamp_diff"]
+            if len(self.running_statistics[id]['last_diffs']) == self.running_statistics[id]['last_diffs'].queue.maxlen:
+                expected_mean = self.can_ids_statistics[id]["mean_timestamp_diff"]
+                expected_std = self.can_ids_statistics[id]["std_timestamp_diff"]
+                actual_mean = self.running_statistics[id]['last_diffs'].mean()
+                actual_std = self.running_statistics[id]['last_diffs'].std()
+                mean_threshold = max(3 * expected_std, 0.01)
+                std_threshold = max(3 * expected_std, 0.01)
 
-                self.running_statistics[id]['last_timestamps'].add(timestamp)
-
-                if actual_std > expected_std:
+                if abs(actual_mean - expected_mean) > mean_threshold or actual_std > std_threshold:
                     if id not in self.intrusion_counter:
                         self.intrusion_counter[id] = 1
                     else:
@@ -98,6 +118,9 @@ class IdTimeIntrusionDetection():
         self.print_results()
 
     def print_results(self, id: bool = False, time: bool = False):
+        if not self.verbose:
+            return
+
         RESET  = "\033[0m"
         RED    = "\033[91m"
         YELLOW = "\033[93m"
