@@ -161,18 +161,9 @@ Melhorada & 0 & 527 & \texttt{0x604} \\
 \end{table}
 
 Na vers\~ao original, o detector gerou 2818 alertas no cen\'ario normal. Como esse
-cen\'ario n\~ao continha ataque, esses alertas correspondem a falsos positivos. A taxa
-observada foi:
-
-\begin{equation}
-\frac{2818}{2818} = 100\%
-\end{equation}
-
-Ap\'os a melhoria, o detector n\~ao gerou alertas no cen\'ario normal:
-
-\begin{equation}
-\frac{0}{2818} = 0\%
-\end{equation}
+cen\'ario n\~ao continha ataque, esses alertas correspondem a falsos positivos. Ap\'os a
+melhoria, o detector n\~ao gerou alertas no cen\'ario normal, indicando que a
+normaliza\c{c}\~ao dos IDs CAN eliminou essa fonte de erro.
 
 Durante o ataque, a vers\~ao melhorada detectou 527 intrus\~oes no ID \texttt{0x604}.
 Esse resultado \'e coerente com o comportamento esperado, pois o ataque injeta mensagens
