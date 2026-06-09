@@ -1,0 +1,3 @@
+scenario,capture,messages,regular_messages,can_id,intrusions
+normal,logs/etapa5_normal.log,2818,2818,,0
+attack,logs/etapa5_handbrake_attack.log,3026,2499,0x604,527
