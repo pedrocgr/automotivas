@@ -1,0 +1,17 @@
+scenario,capture,messages,regular_messages,can_id,intrusions
+normal,logs/etapa5_normal.log,2818,0,0x600,582
+normal,logs/etapa5_normal.log,2818,0,0x601,582
+normal,logs/etapa5_normal.log,2818,0,0x602,582
+normal,logs/etapa5_normal.log,2818,0,0x603,313
+normal,logs/etapa5_normal.log,2818,0,0x604,313
+normal,logs/etapa5_normal.log,2818,0,0x606,127
+normal,logs/etapa5_normal.log,2818,0,0x607,313
+normal,logs/etapa5_normal.log,2818,0,0x60D,6
+attack,logs/etapa5_handbrake_attack.log,3026,0,0x600,539
+attack,logs/etapa5_handbrake_attack.log,3026,0,0x601,539
+attack,logs/etapa5_handbrake_attack.log,3026,0,0x602,539
+attack,logs/etapa5_handbrake_attack.log,3026,0,0x603,290
+attack,logs/etapa5_handbrake_attack.log,3026,0,0x604,707
+attack,logs/etapa5_handbrake_attack.log,3026,0,0x606,118
+attack,logs/etapa5_handbrake_attack.log,3026,0,0x607,290
+attack,logs/etapa5_handbrake_attack.log,3026,0,0x60D,4
